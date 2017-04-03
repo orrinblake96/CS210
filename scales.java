@@ -1,0 +1,65 @@
+package ut1;
+
+import java.util.*;
+
+public class scales {
+	public static void main (String [] args){
+		int [] arr = {814, 4713 ,3920 ,1139, 2517 ,4636 ,579, 2428, 4224, 4088 ,2590, 2874, 782, 2110, 799, 308, 3235, 3814, 4870, 1092, 2999, 898, 2813, 1859, 3242, 3344, 4602, 3040, 3492, 4382, 673, 3256, 3453, 1191, 16, 2531, 1128, 4839, 3485, 4020};
+		Arrays.sort(arr);
+		
+		int left = 0;
+		int right = 0;
+		for(int i=0;i<arr.length;i++){
+			if(i%2==0){
+			left += arr[i];
+		}else{
+			right += arr[i];
+		  	}
+		}
+		
+		
+		int difference = left - right;
+
+		while(difference > 10 || difference < -5){
+			if(left > right){
+				int diff = difference/2;
+					int num = getClosest(arr, diff);
+					right += num;
+					 difference = left - right;
+			}else{
+				int diff = difference/2;
+				int num = getClosest(arr, diff);
+				left += num;
+				 difference = left - right;
+			}
+		}
+		System.out.println("amount on left side :" + left);
+		System.out.println("amount on right side : " + right);
+		System.out.println(difference);
+		
+	}
+	public static int getClosest(int[] a, int x) {
+
+	    int low = 0;
+	    int high = a.length - 1;
+
+	    if (high < 0)
+	        throw new IllegalArgumentException("The array cannot be empty");
+
+	    while (low < high) {
+	        int mid = (low + high) / 2;
+	        assert(mid < high);
+	        int d1 = Math.abs(a[mid  ] - x);
+	        int d2 = Math.abs(a[mid+1] - x);
+	        if (d2 <= d1)
+	        {
+	            low = mid+1;
+	        }
+	        else
+	        {
+	            high = mid;
+	        }
+	    }
+	    return a[high];
+	}
+}
