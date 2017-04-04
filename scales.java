@@ -7,6 +7,7 @@ public class scales {
 		int [] arr = {814, 4713 ,3920 ,1139, 2517 ,4636 ,579, 2428, 4224, 4088 ,2590, 2874, 782, 2110, 799, 308, 3235, 3814, 4870, 1092, 2999, 898, 2813, 1859, 3242, 3344, 4602, 3040, 3492, 4382, 673, 3256, 3453, 1191, 16, 2531, 1128, 4839, 3485, 4020};
 		Arrays.sort(arr);
 		
+		
 		int left = 0;
 		int right = 0;
 		for(int i=0;i<arr.length;i++){
@@ -20,16 +21,19 @@ public class scales {
 		
 		int difference = left - right;
 
-		while(difference > 10 || difference < -5){
+//		while(difference > 10 || difference < -5){
+		for(int k = 100000; k>=0;k--){
 			if(left > right){
 				int diff = difference/2;
 					int num = getClosest(arr, diff);
 					right += num;
+					left -= num;
 					 difference = left - right;
 			}else{
 				int diff = difference/2;
 				int num = getClosest(arr, diff);
 				left += num;
+				right -= num;
 				 difference = left - right;
 			}
 		}
