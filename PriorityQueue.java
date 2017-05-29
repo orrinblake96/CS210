@@ -62,7 +62,7 @@ public class PQ{
 		//[2, 3, 5, 10] Here higher numbers have higher priority, so they are on the top
 		
 		for(int i=0;i<size;i++){
-			System.out.println("Enter nums please: ");
+			System.out.println("Enter numbers please: ");
 			myQueue.insert(sc.nextInt());
 		}
 		
