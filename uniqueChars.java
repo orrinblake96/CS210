@@ -1,8 +1,13 @@
 package ut1;
+import java.util.*;
 
 public class uniqueChars {
 	public static void main(String args[]){
-	   System.out.println(countUniqueCharacters("hello"));
+		Scanner sc = new Scanner(System.in);
+		System.out.println("please enter a word: ");
+		String word = sc.next();
+		
+	   System.out.println(countUniqueCharacters(word));
 }
     public static int countUniqueCharacters(String input) {
         boolean[] isItThere = new boolean[Character.MAX_VALUE];
@@ -20,3 +25,4 @@ public class uniqueChars {
         return count;
     }
 }
+
